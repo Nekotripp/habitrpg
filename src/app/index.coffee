@@ -1,5 +1,9 @@
 derby = require 'derby'
-{get, view, ready} = derby.createApp module
+i18n = require('derby-i18n')
+app = i18n.localize derby.createApp(module),
+  availableLocales: ['en'],
+  urlScheme: 'path'
+{get, view, ready} = app
 derby.use require('derby-ui-boot'), {styles: ['bootstrap', 'responsive']}
 derby.use require '../../ui'
 derby.use require 'derby-auth/components'
